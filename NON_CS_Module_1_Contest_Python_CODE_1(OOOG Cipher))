@@ -1,0 +1,42 @@
+
+                                                                                                                                    def substitution_cipher(cipher, word):
+    encrypted_word = ""
+    for char in word:
+        if char.islower():
+            return "Word should be in capitals"
+        elif char in cipher:
+            encrypted_word += cipher[char]
+        else:
+            encrypted_word += char
+    return encrypted_word
+
+def encrypt_word(key, operation, word):
+    if not isinstance(key, int):
+        return "Enter valid key"
+    elif operation not in ["addition", "subtraction"]:
+        return "Invalid Operation"
+    
+    cipher = {
+        'A': 'Z', 'B': 'Y', 'C': 'X', 'D': 'W', 'E': 'V', 'F': 'U', 'G': 'T', 'H': 'S', 'I': 'R', 'J': 'Q', 
+        'K': 'P', 'L': 'O', 'M': 'N', 'N': 'M', 'O': 'L', 'P': 'K', 'Q': 'J', 'R': 'I', 'S': 'H', 'T': 'G', 
+        'U': 'F', 'V': 'E', 'W': 'D', 'X': 'C', 'Y': 'B', 'Z': 'A'
+    }
+
+    encrypted_word = substitution_cipher(cipher, word)
+    if isinstance(encrypted_word, str):
+        if operation == "addition":
+            return "".join(chr(ord(char) + key) for char in encrypted_word)
+        elif operation == "subtraction":
+            return "".join(chr(ord(char) - key) for char in encrypted_word)
+    else:
+        return encrypted_word
+
+# Get input from the user
+key = input()
+operation = input()
+word = input()
+
+# Call the function with the given input
+result = encrypt_word(int(key), operation.lower(), word.upper())
+print(result)
+                                                                                                                            
