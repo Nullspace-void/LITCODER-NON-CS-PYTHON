@@ -1,0 +1,35 @@
+def threeSumClosest(nums, target):
+    nums.sort()
+    n = len(nums)
+    diff = float('inf')
+    closestSum = 0
+
+    for i in range(n - 2):
+        left = i + 1
+        right = n - 1
+
+        while left < right:
+            currSum = nums[i] + nums[left] + nums[right]
+            currDiff = abs(currSum - target)
+
+            if currDiff < diff:
+                diff = currDiff
+                closestSum = currSum
+
+            if currSum < target:
+                left += 1
+            elif currSum > target:
+                right -= 1
+            else:
+                return target
+
+    return closestSum
+
+nums = input().split()
+nums = [int(num) for num in nums]
+target = int(input())
+
+
+result = threeSumClosest(nums, target)
+print(result)
+                                                                                                                            
