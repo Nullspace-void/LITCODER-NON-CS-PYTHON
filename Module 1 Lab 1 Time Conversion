@@ -1,0 +1,9 @@
+from datetime import datetime
+def convert12to24(time_12h):
+    time_24h=datetime.strptime(time_12h,"%I:%M:%S %p").strftime("%H:%M:%S")
+    return time_24h
+    
+time_12h=input()
+time_24h=convert12to24(time_12h)
+print(time_24h)
+                                                                                                                            
