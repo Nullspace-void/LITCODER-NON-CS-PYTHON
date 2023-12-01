@@ -1,0 +1,28 @@
+def restoreip(s):
+    def is_valid(segment):
+        if len(segment)>1 and segment[0]=="0":
+            return False
+        if int(segment)>255:
+            return False
+        return True
+    def backtrack(s,segments,start):
+        if len(segments)==4 and start==len(s):
+            return ['.'.join(segments)]
+        if len(segments)==4 or start==len(s):
+            return[]
+            
+        res=[]
+        for i in range(start,min(start=3,len(s))):
+            segment=s[start:i+1]
+            if is_valid(segment):
+                segments.append(segment)
+                res.extend(backtrack(s,segments,i+1))
+                segments.pop()
+        return res
+    
+    return backtrack(s,[],0)
+    
+s=25525511135
+result=restoreip(s)
+print (result)
+                                                                                                                            
