@@ -1,0 +1,18 @@
+import sys
+def sort(colors):
+    counts=[0]*3
+    for color in colors:
+        counts[color]+=1
+    sorted_colors=[]
+    
+    for i in range (len(counts)):
+        sorted_colors.extend([i]*counts[i])
+        
+    return ' '.join(map(str,sorted_colors))
+int = input()
+numbers=int.split()
+colors=[int(num) for num in numbers]
+print(colors)
+sorted_colors=sort(colors)
+print (sorted_colors)
+                                                                                                                            
