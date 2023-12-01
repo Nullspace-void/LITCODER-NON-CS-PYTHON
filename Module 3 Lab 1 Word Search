@@ -1,0 +1,62 @@
+def exist(matrix, word):
+    if not matrix or not matrix[0]:
+        return False
+    
+    rows = len(matrix)
+    cols = len(matrix[0])
+    
+    def dfs(i, j, k):
+        if i < 0 or i >= rows or j < 0 or j >= cols or matrix[i][j] != word[k]:
+            return False
+        if k == len(word) - 1:
+            return True
+        
+        temp = matrix[i][j]
+        matrix[i][j] = '#'  # Mark the visited cell
+        
+        # Check the neighboring cells
+        res = dfs(i + 1, j, k + 1) or dfs(i - 1, j, k + 1) or dfs(i, j + 1, k + 1) or dfs(i, j - 1, k + 1)
+        
+        matrix[i][j] = temp  # Restore the original value
+        
+        return res
+    
+    # Traverse the matrix and search for the target word
+    for i in range(rows):
+        for j in range(cols):
+            if dfs(i, j, 0):
+                return True
+    
+    return False
+
+# Example usage
+row = int(input())
+col = int(input())
+target_word = input()
+
+input_string = input()
+
+elements = input_string.split()
+
+
+rows = len(elements)
+cols = len(elements[0])
+
+
+matrix = []
+
+
+for i in range(rows):
+    row = []
+    for j in range(cols):
+        row.append(elements[i][j])
+    matrix.append(row)
+
+result = exist(matrix, target_word)
+
+# Print the result
+if result:
+    print("Yes")
+else:
+    print("No")
+                                                                                                                            
