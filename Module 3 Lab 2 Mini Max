@@ -1,0 +1,15 @@
+from itertools import combinations
+
+numbers = input().split()
+numbers = [int(num) for num in numbers]
+
+min_sum = float('inf')
+max_sum = float('-inf')
+
+for combination in combinations(numbers, 4):
+    current_sum = sum(combination)
+    min_sum = min(min_sum, current_sum)
+    max_sum = max(max_sum, current_sum)
+
+print(min_sum, max_sum)
+                                                                                                                            
