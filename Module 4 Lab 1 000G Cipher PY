@@ -1,0 +1,39 @@
+def encrypt_word(word, key, operation, cipher):
+   
+    if not isinstance(key, int):
+        return "Enter valid key"
+
+    if operation not in ['addition', 'subtraction']:
+        return "Invalid Operation"
+    
+    if not word.isupper():
+        return "Word should be in capitals"
+
+    encrypted_word = ''
+    for char in word:
+        if char in cipher:
+            encrypted_word += cipher[char]
+        else:
+            encrypted_word += char
+    
+    if operation == 'addition':
+        encrypted_word = ''.join(chr((ord(char) - 65 + key) % 26 + 65) for char in encrypted_word)
+        print(encrypted_word)
+    elif operation == 'subtraction':
+        encrypted_word = ''.join(chr((ord(char) - 65 - key) % 26 + 65) for char in encrypted_word)
+        print(encrypted_word)
+
+
+cipher = {
+    'A': 'Z', 'B': 'Y', 'C': 'X', 'D': 'W', 'E': 'V', 'F': 'U', 'G': 'T',
+    'H': 'S', 'I': 'R', 'J': 'Q', 'K': 'P', 'L': 'O', 'M': 'N', 'N': 'M',
+    'O': 'L', 'P': 'K', 'Q': 'J', 'R': 'I', 'S': 'H', 'T': 'G', 'U': 'F',
+    'V': 'E', 'W': 'D', 'X': 'C', 'Y': 'B', 'Z': 'A'
+}
+
+key = int(input())
+operation = input()
+word = input()
+
+encrypt_word(word, key, operation, cipher)
+                                                                                                                            
