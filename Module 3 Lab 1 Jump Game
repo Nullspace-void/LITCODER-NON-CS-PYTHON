@@ -1,0 +1,18 @@
+def can_jump(nums):
+    last_position = len(nums) - 1
+
+    for i in range(len(nums) - 1, -1, -1):
+        if i + nums[i] >= last_position:
+            last_position = i
+
+    return last_position == 0
+
+# Get the input array
+nums = list(map(int, input().split()))
+
+# Check if it is possible to reach the last index
+result = can_jump(nums)
+
+# Print the result
+print(result)
+                                                                                                                            
