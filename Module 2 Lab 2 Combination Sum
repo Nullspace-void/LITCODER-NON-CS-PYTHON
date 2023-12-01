@@ -1,0 +1,25 @@
+def combinationSum(candidates, target):
+    def backtrack(remain, current_combination, start):
+        if remain == 0:
+            result.append(list(current_combination))
+            return
+        elif remain < 0:
+            return
+
+        for i in range(start, len(candidates)):
+            current_combination.append(candidates[i])
+            backtrack(remain - candidates[i], current_combination, i)
+            current_combination.pop()
+
+    result = []
+    current_combination = []
+    backtrack(target, current_combination, 0)
+    return result
+
+candidates = input().split()
+candidates = [int(candidate) for candidate in candidates]
+target = int(input())
+
+result = combinationSum(candidates, target)
+print(result)
+                                                                                                                            
