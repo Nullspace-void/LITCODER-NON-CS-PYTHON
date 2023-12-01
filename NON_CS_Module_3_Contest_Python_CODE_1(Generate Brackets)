@@ -1,0 +1,18 @@
+import sys
+def generateparanthesis(n):
+    result=[]
+    generate("",n,n,result)
+    return result
+def generate(s,left,right , result):
+    if left == 0 and right == 0:
+        result.append(s)
+        return    
+    if left > 0:
+        generate (s+'(',left-1,right,result)
+    if right > left:
+        generate(s+')',left,right-1,result)
+n = int(input())    
+result=generateparanthesis(n)
+output=','.join(result)
+print (output)
+                                                                                                                            
