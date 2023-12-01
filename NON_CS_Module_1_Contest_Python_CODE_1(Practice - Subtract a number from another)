@@ -1,0 +1,9 @@
+def sub(a,b):
+    return a-b
+    # Hint Type return a-b below
+
+a = int(input())
+b = int(input())
+ret = sub(a,b)
+print(ret)
+                                                                                                                            
