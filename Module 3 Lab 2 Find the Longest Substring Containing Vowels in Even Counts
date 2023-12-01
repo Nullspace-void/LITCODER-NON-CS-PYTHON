@@ -1,0 +1,31 @@
+def longestSubstring(s):
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    count = {vowel: 0 for vowel in vowels}
+    last_index = {i: -1 for i in range(6)}
+    max_length = 0
+    odd_count = 0
+
+    for end in range(len(s)):
+        if s[end] in vowels:
+            count[s[end]] += 1
+
+            if count[s[end]] % 2 != 0:
+                odd_count += 1
+                last_index[odd_count] = end
+
+            else:
+                odd_count -= 1
+
+        if odd_count == 0:
+            max_length = max(max_length, end + 1)
+
+        elif odd_count in last_index:
+            max_length = max(max_length, end - last_index[odd_count])
+
+    return max_length
+
+s = input()
+
+result = longestSubstring(s)
+print(result)
+                                                                                                                            
